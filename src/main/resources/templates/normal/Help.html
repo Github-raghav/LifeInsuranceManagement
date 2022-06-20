@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="normal/base::Layout(~{::section})"> 
+<head>
+<meta charset="UTF-8">
+<title>home page</title>
+</head>
+<body>
+  
+  <section>  
+		<div class="container-sm shadow-lg">
+	  <div class="row">
+	    <div class="col-md-8 offset-md-2">
+           <div class="my-card mt-3">
+           
+           <h1 class="text-center">Report The Technical Issues</h1>
+           
+           <form action="" th:action="@{/user/helpRequest}" th:object="${Help}" method="post" >
+            
+
+            <div class="mb-3">
+            <label for="name_field">Issue</label>
+            <input type="text"
+            name="issue" 
+            class="form-control"
+            id="name_field"
+            placeholder="Enter Issue"
+            required
+            >            
+  </div>
+            <div class="mb-3">
+            <label for="desc_field">Description</label>
+            <input type="text"
+            name="description" 
+            class="form-control"
+            id="desc_field"
+            placeholder="Enter Description"
+            required
+            >
+  </div>
+
+           <div class="mb-3">
+           <label for="dot_field">Date Of Ticket-</label> 
+           <p>
+            <script> document.write(new Date().toLocaleDateString()); </script>
+            </p>
+         
+  </div>
+            <div class="container text-center mt-10">
+            <button type="Submit" class="btn bg-primary text-white">Submit</button>
+            </div>
+            
+           </form>
+           
+           </div>	      
+	    </div>
+	  </div>
+	</div>
+  </section>
+</body>
+</html>

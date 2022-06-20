@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="normal/base::Layout(~{::section})"> 
+<head>
+<meta charset="UTF-8">
+<title>home page</title>
+</head>
+<body>
+  
+  <section>  
+	<body class="bg-light">
+    <div class="container-sm shadow-lg">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="my-card mt-3">
+            <h1 class="text-center">Policy Premium Calculator</h1>
+
+            <form action="">
+              <div class="mb-3">
+                <label for="policy_field">Select Policy</label>
+                <select
+                  class="form-select"
+                  aria-label="policy_field"
+                  id="policy_name"
+                >
+                  <option selected>Select......</option>
+                  <option value="1">Home Insurance</option>
+                  <option value="2">Car Insurance</option>
+                  <option value="3">Mobile Insurance</option>
+                  <option value="3">Life Insurance</option>
+                </select>
+              </div>
+              <p>
+                Deposit Amount Per Month/Year: $<input
+                  id="amount"
+                  type="number"
+                  min="1"
+                  max="1000000"
+                  onchange="policy()"
+                />
+              </p>
+              <p>
+                Interest Rate:
+                <input
+                  id="interest_rate"
+                  type="number"
+                  min="0"
+                  max="100"
+                  step=".1"
+                  onchange="policy()"
+                />%
+              </p>
+              <p>
+                Term In Months:
+                <input id="months" type="number" min="1" max="72" step="1" />
+              </p>
+              <p>
+                Annual Income: $<input
+                  id="income"
+                  type="number"
+                  min="1"
+                  max="1000000"
+                  onchange="policy()"
+                />
+              </p>
+              <p>
+                <Button   type="button"
+                  value="Calculate"
+                  onclick="computeLoan()" class="btn btn-primary">Calculate</Button>
+                
+                
+              </p>
+
+              <h2 id="payment"></h2>
+              <h2 id="asamount"></h2>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  </section>
+</body>
+</html>

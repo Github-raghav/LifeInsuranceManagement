@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="admin/base::Layout(~{::section})"> 
+<head>
+<meta charset="UTF-8">
+<title>Help Request page</title>
+</head>
+<body>
+  
+  <section>  
+	
+	<div class="card ms-3 me-3 mt-5">
+		<div class="class-body">
+			<h1 class="text-center">Help Requests</h1>	
+	           
+	           <table class="table">
+  <thead>
+    <tr>
+     <th scope="col">Id</th>
+     <th scope="col">Issue</th>
+     <th scope="col">Description</th>     
+     <th scope="col">Action</th>
+    </tr> 
+  </thead>
+  <tbody>
+    
+    
+    <tr th:each="c : ${help}">
+      <td th:text=${c.id} class="table-active"></td>
+      <th scope="row" th:text=${c.issue}></th>
+      <td th:text=${c.description} class="table-active"></td>
+      <td>
+            <input type="text"
+            name="reply" 
+            class="form-control"
+            placeholder="Reply Here"
+            required
+            >            
+      </td>
+    </tr>
+  </tbody>
+</table>
+	           
+	           
+		</div>
+	</div>
+  </section>
+</body>
+</html>

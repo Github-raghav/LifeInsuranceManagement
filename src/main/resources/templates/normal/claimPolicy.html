@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="normal/base::Layout(~{::section})"> 
+<head>
+<meta charset="UTF-8">
+<title>Claim page</title>
+</head>
+<body>
+  
+  <section>  
+	<div class="container">
+	  <div class="row">
+	    <div class="col-md-8 offset-md-2">
+           <div class="my-card mt-3">
+           
+                  <!--alert/success message  -->
+     <div th:if="${session.message}"  th:classappend="${session.message.type}" class="alert"  role="alert">
+      <p th:text="${session.message.content}"></p>
+      <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+      
+      </div>
+           
+           
+           
+           <h1 class="text-center">Claim Form</h1>
+           
+           <form action="" th:action="@{/user/process-claim}" method="post" th:object="${Claim}" >
+            <!-- old claim number -->
+            
+            <div class="mb-3">
+             <label for="ocn_field">Old Claim Number</label>
+            <input type="number"
+            name="claimNumber" 
+            class="form-control"
+             id="ocn_field"
+            placeholder="Enter Old Claim Number"
+            required
+            >
+  </div>
+
+            <div class="mb-3">
+            <label for="idate_field">Incurred Date</label>
+            <input type="date"
+            name="IncurredDate" 
+            class="form-control"
+            id="idate_field"
+            placeholder="Enter Incurred Date"
+            required
+            >            
+  </div>
+            <div class="mb-3">
+            <label for="rd_field">Reported Date</label>
+            <input type="date"
+            name="ReportedDate" 
+            class="form-control"
+            id="rdate_field"
+            placeholder="Enter Reported Date"
+            required
+            >
+  </div>
+
+           <div class="mb-3">
+           <label for="docp_field">Date Of Claim Paid</label>
+           <input type="date"
+           name="claimPaid" 
+           class="form-control"
+           id="docp_field"
+           placeholder="Enter Date Of Claim Paid"
+           required
+           >
+  </div>
+
+           <div class="mb-3">
+           <label for="doa_field">Date Of Admission</label>
+           <input type="date"
+           name="admission" 
+           class="form-control"
+           id="doa_field"
+           placeholder="Enter Date Of Admission"
+           required
+           >
+  </div>
+  
+  
+  		 <div class="mb-3">
+           <label for="doa_field">Date Of Discharge</label>
+           <input type="date"
+           name="discharge" 
+           class="form-control"
+           id="doa_field"
+           placeholder="Enter Date Of discharge"
+           required
+           >
+  </div>
+  
+  
+            
+            <div class="mb-3">
+            <label for="name_field">Claim Status</label>
+            <input type="text"
+            name="claimStatus" 
+            class="form-control"
+            id="name_field"
+            placeholder="Enter Claim Status"
+            required
+            >
+  </div>
+
+
+            <div class="mb-3">
+            <label for="tc_field">Total Charges</label>
+            <input type="number"
+            name="totalCharges" 
+            class="form-control"
+            id="tc_field"
+            placeholder="Enter Total Charges"
+            required
+            >
+  </div>
+
+            <div class="mb-3">
+            <label for="tdp_field">Total Deductible Paid</label>
+            <input type="number"
+            name="totalDeductiblePaid" 
+            class="form-control"
+            id="tdp_field"
+            placeholder="Enter Total Deductible Paid"
+            th:value="@{Claim.totalDeductiblePaid}"
+            required
+            >
+  </div>
+
+            <div class="mb-3">
+            <label for="tcoi_field">Total CO-Insurance Paid</label>
+            <input type="number"
+            name="totalCoInsurancePaid" 
+            class="form-control"
+            id="tcoi_field"
+            placeholder="Enter Total CO-Insurance Paid"
+            th:valuue="@{Claim.totalCoInsurancePaid}"
+            required
+            >
+  </div>
+
+
+            <div class="mb-3">
+            <label for="texc_field">Total Excluded Amount</label>
+            <input type="number"
+            name="totalExcludedAmount" 
+            class="form-control"
+            id="texc_field"
+            placeholder="Enter Total Excluded Amount"
+            required
+            >
+  </div>
+
+
+            <div class="mb-3">
+            <label for="texe_field">Total Exceeded Amount</label>
+            <input type="number"
+            name="totalExceededAmount" 
+            class="form-control"
+            id="texe_field"
+            placeholder="Enter Total Exceeded Amount"
+            required
+            >
+  </div>
+
+            <div class="mb-3">
+            <label for="bp_field">Benefit Paid</label>
+            <input type="number"
+            name="benefitPaid" 
+            class="form-control"
+            id="bp_field"
+            placeholder="Enter Total Benefit Paid"
+            required
+            >
+  </div>
+
+            <div class="mb-3">
+            <label for="prhc_field">Total Pre-Hospital Charges</label>
+            <input type="number"
+            name="preHospitalCharges" 
+            class="form-control"
+            id="prhc_field"
+            placeholder="Enter Total Pre-Hospital Charges"
+            required
+            >
+  </div>
+
+            <div class="mb-3">
+            <label for="pohc_field">Total Post-Hospital Charges</label>
+            <input type="number"
+            name="postHospitalCharges" 
+            class="form-control"
+            id="pohc_field"
+            placeholder="Enter Total Post-Hospital Charges"
+            required
+            >
+  </div>
+
+            <div class="mb-3">
+            <label for="formFile" class="form-label">Document Upload</label>
+            <input class="form-control" 
+            name="docFile"
+            type="file" 
+            id="formFile">
+  </div>
+            
+            
+  			
+ 		
+            
+            
+            <div class="container text-center mt-10">
+            <button type="submit" class="btn bg-primary text-white">Submit</button>
+            </div>
+            
+           </form>
+
+           
+           </div>	      
+	    </div>
+	  </div>
+	</div>
+  </section>
+</body>
+</html>

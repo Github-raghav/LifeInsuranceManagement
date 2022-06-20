@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="admin/base::Layout(~{::section})"> 
+<head>
+<meta charset="UTF-8">
+<title>home page</title>
+</head>
+<body>
+  
+  <section>  
+		<div class="container-sm shadow-lg">
+	  <div class="row">
+	    <div class="col-md-8 offset-md-2">
+           <div class="my-card mt-3">
+           
+                  
+           
+           
+           
+           <h1 class="text-center">Update Policy</h1>
+           
+                        <!--alert/success message  -->
+     <div th:if="${session.message}"  th:classappend="${session.message.type}" class="alert"  role="alert">
+      <p th:text="${session.message.content}"></p>
+      <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+      
+      </div>
+           
+           <form th:action="@{/adminLogin/process-update}" method="post" th:object="${Policy}" >
+           
+            <!-- old claim number -->
+            
+            <div class="mb-3">
+             <label for="pn_field">Policy Number</label>
+            <input type="number"
+            name="pNumber" 
+            class="form-control"
+             id="pn_field"
+            placeholder="Enter Policy Number"
+             th:value="${pNumber}"
+            required
+            >
+  </div>
+
+            <div class="mb-3">
+            <label for="name_field">Policy Name</label>
+            <input type="text"
+            name="policyName" 
+            class="form-control"
+            id="name_field"
+            placeholder="Enter Name"
+            th:value=${policy.policyName}
+            required
+            >
+            
+            <!-- Policy Name -->
+                             
+  </div>
+            <div class="mb-3">
+            <label for="desc_field">Description</label>
+            <input type="text"
+            name="description" 
+            class="form-control"
+            id="desc_field"
+            placeholder="Enter Description"
+            required
+            th:value="${policy.description}"
+            >
+  </div>
+
+           <div class="mb-3">
+           <label for="napy_field">Net Amount Per Year</label>
+           <input type="number"
+           name="pAmountPerYear" 
+           class="form-control"
+           id="napy_field"
+           placeholder="Enter Net Amount Per Year"
+           th:value="${policy.pAmountPerYear}"
+           required
+           >
+  </div>
+
+           <div class="mb-3">
+           <label for="term_field">Term</label>
+           <input type="text"
+           name="pTerm" 
+           class="form-control"
+           id="term_field"
+           placeholder="Enter Term"
+           th:value="${policy.pTerm}"
+           required
+           >
+  </div>
+            
+           
+            <div class="container text-center mt-10">
+            <button type="Submit" class="btn bg-primary text-white">Submit</button>
+            </div>
+            
+           </form>
+           
+           </div>	      
+	    </div>
+	  </div>
+	</div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="admin/base::Layout(~{::section})"> 
+<head>
+<meta charset="UTF-8">
+<title>home page</title>
+</head>
+<body>
+  
+  <section>  
+	
+	<div class="card ms-3 me-3 mt-5">
+		<div class="class-body">
+			<h1 class="text-center">Policies</h1>	
+	           
+	           <table class="table">
+  <thead>
+    <tr>
+     <th scope="col">PolicyName</th>
+     <th scope="col">PolicyNumber</th>
+     <th scope="col">amount/year</th>
+     <th scope="col">Term</th>
+     <th scope="col">Action</th>
+    </tr> 
+  </thead>
+  <tbody>
+    
+    
+    <tr th:each="c : ${policies}">
+      <th scope="row" th:text=${c.policyName}></th>
+      <td th:text=${c.pNumber} class="table-active"></td>
+      <td th:text=${c.pAmountPerYear}></td>
+      <td th:text=${c.pTerm}></td>
+      <td>
+      <a th:href="@{'/adminLogin/delete/'+${c.pNumber}}" class="btn btn-danger btn-sm">Delete</a>
+      
+      <form method="Post" th:action="@{'/adminLogin/update/'+${c.pNumber}}">
+      
+      <button class="btn btn-primary btn-sm mt-2">Update</button>
+      </form>
+      
+      
+      
+      </td>
+    </tr>
+  </tbody>
+</table>
+	           
+	           
+		</div>
+	</div>
+  </section>
+</body>
+</html>

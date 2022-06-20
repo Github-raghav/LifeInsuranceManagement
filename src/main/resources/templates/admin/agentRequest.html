@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="admin/base::Layout(~{::section})"> 
+<head>
+<meta charset="UTF-8">
+<title>Agent Request page</title>
+</head>
+<body>
+  
+  <section>  
+	
+	<div class="card ms-3 me-3 mt-5">
+		<div class="class-body">
+			<h1 class="text-center">Agent Requests</h1>	
+	           
+	           
+	              <!-- search -->
+           <form th:action="@{/adminLogin/agents}"  th:value="${Keyword}">
+           <div class="search-container my-3">
+           
+           <input id="search-input" type="text" name="keyword"  class="form-control" placeholder="Search here" />
+           <div class="search-result">
+           
+           <h2>this is result</h2>
+           
+           </div>
+           
+           </div>
+	           </form>
+	           
+	           
+	           <table class="table">
+  <thead>
+    <tr>
+     <th scope="col">AgentNumber</th>
+     <th scope="col">AgentName</th>
+     <th scope="col">Agent email</th>     
+     <th scope="col">Action</th>
+    </tr> 
+  </thead>
+  <tbody>
+    
+    
+    <tr th:each="c : ${agents}">
+      <td th:text=${c.id} class="table-active"></td>
+      <th scope="row" th:text=${c.Name}></th>
+      <td th:text=${c.email} class="table-active"></td>
+      <td>
+      <a th:href="@{'/adminLogin/deleteAgent/'+${c.id}}" class="btn btn-danger btn-sm">Delete</a>
+       
+      </td>
+    </tr>
+  </tbody>
+</table>
+	           
+	           
+		</div>
+	</div>
+  </section>
+</body>
+</html>

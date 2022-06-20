@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="admin/base::Layout(~{::section})"> 
+<head>
+<meta charset="UTF-8">
+<title>home page</title>
+</head>
+<body>
+  
+  <section>  
+	<div class="container">
+	  <div class="row">
+	    <div class="col-md-8 offset-md-2">
+           <div class="my-card mt-3">
+           
+                  <!--alert/success message  -->
+     <div th:if="${session.message}"  th:classappend="${session.message.type}" class="alert"  role="alert">
+      <p th:text="${session.message.content}"></p>
+      <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+      
+      </div>
+           
+           
+           
+           <h1 class="text-center">Register here</h1>
+           
+           <form action="" th:action="@{/process-updateUser}" method="post" th:object="${user}">
+            <!-- name -->
+            
+            <div class="mb-3">
+             <label for="name_field">Your First Name</label>
+            <input type="text"
+            name="FirstName" 
+            class="form-control"
+             id="name_field"
+            aria-describedby="emailHelp"
+            placeholder="Enter Here"
+            required
+            th:value="${user.FirstName}">
+  </div>
+            
+              <div class="mb-3">
+             <label for="name_field">Your Last Name</label>
+            <input type="text"
+            name="LastName" 
+            class="form-control"
+             id="name_field"
+            aria-describedby="emailHelp"
+            placeholder="Enter Here"
+            required
+            th:value="${user.LastName}">
+  </div>
+  
+  
+            <!-- date of birth -->
+               <div class="mb-3">
+             <label for="dob_field">Date of Birth</label>
+            <input type="text"
+            name="dob" 
+            class="form-control"
+             id="dob_field"
+            placeholder="Enter DOB"
+            required
+            th:value="${user.dob}"
+            >
+  </div>
+            <!-- Gender -->
+            <div class="mb-3">
+             <label for="gender_field" >Gender</label>
+  			<select class="form-select" aria-label="gender_field" name="gender" th:value="${user.gender}">
+ 			 <option selected>Select......</option>
+  				<option value="1">Male</option>
+  				<option value="2">Female</option>
+  				<option value="3">Others</option>
+			</select>
+</div>
+            <!-- Contact Number -->
+            <div class="mb-3">
+             <label for="contact_field">Your contact</label>
+            <input type="number"
+            name="contactNo" 
+            class="form-control"
+             id="contact_field"
+            placeholder="Enter Your Contact Number"
+            maxlength=10
+            required
+            th:value="${user.contactNo}"
+            >
+  </div>
+            
+            
+            <!-- email -->
+            
+            <div class="mb-3">
+             <label for="email_field">Your Email</label>
+            <input type="text"
+            name="email" 
+            class="form-control"
+             id="email_field"
+            aria-describedby="emailHelp"
+            placeholder="Enter Email"
+            required
+            th:value="${user.email}">
+  </div>
+            <!-- User id -->
+            <div class="mb-3">
+             <label for="uid_field">Your UserId </label>
+            <input type="number"
+            name="id" 
+            class="form-control"
+             id="uid_field"
+            placeholder="Enter UserId"
+            required
+            th:value="${user.id}"
+            >
+  </div>
+            
+            
+            <!-- Password -->
+           
+  
+   <!-- role -->
+   
+     <div class="mb-3">
+             <label for="role_field">Your role</label>
+            <input type="text"
+            name="role" 
+            class="form-control"
+             id="role_field"
+            placeholder="Enter role"
+            th:value="${user.role}"
+            required>
+  </div>
+   
+            
+
+            <!--terms and condition agreement  -->
+            <div class="form-group form-check ">
+            
+            
+            
+            </div>
+            
+            <div class="container text-center mt-10">
+            <button type="submit" class="btn bg-primary text-white">Submit</button>
+            </div>
+            
+           </form>
+           
+           </div>	      
+	    </div>
+	  </div>
+	</div>
+  </section>
+</body>
+</html>

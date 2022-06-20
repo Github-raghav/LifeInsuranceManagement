@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="normal/base::Layout(~{::section})"> 
+<head>
+<meta charset="UTF-8">
+<title>home page</title>
+</head>
+<body>
+  
+  <section>  
+		<div class="container-sm shadow-lg">
+	  <div class="row">
+	    <div class="col-md-8 offset-md-2">
+           <div class="my-card mt-3">
+           
+                  
+           
+           
+           
+           <h1 class="text-center">Personal Details Section</h1>
+           
+           <form action="" type="submit" th:action="@{/user/process_insurance}" method="post" th:object="${ClientInfo}">
+           
+            
+            <div class="mb-3">
+            <label for="name_field">Name</label>
+            <input type="text"
+            name="Name" 
+            class="form-control"
+            id="name_field"
+            placeholder="Enter Name"
+            th:value="${Name}"
+            required
+            >
+  </div>
+            
+            <div class="mb-3">
+            <label for="gender_field">Gender</label>
+            <select class="form-select" name ="gender" th:value="${gender}" aria-label="gender_field">
+            <option selected>Select......</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+            <option value="3">Others</option>
+            </select>
+  </div>
+  
+            <div class="mb-3">
+            <label for="dob_field">Date of Birth</label>
+            <input type="datetime"
+            name="dob" 
+            class="form-control"
+            id="dob_field"
+            placeholder="Enter Date Of Birth "
+            th:value="${dob}"
+            required
+            >
+  </div>
+  				
+ 			<div class="mb-3">
+            <label for="relation_field">Relationship</label>
+  			<select class="form-select" name="Relationship" th:value="${Relationship}" aria-label="relation_field">
+ 			<option selected>Select......</option>
+  			<option value="1">Single</option>
+  			<option value="2">Married</option>
+            </select>
+  </div>
+  			
+  			
+  			<div class="mb-3">
+             <label for="rh_field">Residence History</label>
+            <input type="text"
+            name="rh" 
+            class="form-control"
+             id="rh_field"
+            placeholder="Enter Residence History"
+            required
+            >
+  </div>
+  			
+  			<div class="mb-3">
+             <label for="rd_field">Residence Date</label>
+            <input type="datetime"
+            name="ResidenceDate" 
+            class="form-control"
+             id="rd_field"
+             th:value="${ResidenceDate}"
+            placeholder="Enter Residence Date"
+            required
+            >
+  </div>
+  			
+  			
+  			<div class="mb-3">
+             <label for="v_field">Village</label>
+            <input type="text"
+            name="village" 
+            class="form-control"
+             id="v_field"
+            placeholder="Enter Village Name"
+            th:value="${village}"
+            required
+            >
+  </div>
+           
+            
+            <div class="mb-3">
+             <label for="block_field">Block</label>
+            <input type="text"
+            name="block" 
+            class="form-control"
+             id="block_field"
+            placeholder="Enter Block Name"
+            th:value="${block}"
+            required>
+  </div>
+  
+  			
+            
+            <div class="mb-3">
+             <label for="district_field">District</label>
+            <input type="text"
+            name="district" 
+            class="form-control"
+             id="district_field"
+            placeholder="Enter District Name"
+            th:value="${district}"
+            required>
+  </div>
+
+            <div class="mb-3">
+            <label for="state_field">State</label>
+            <input type="text"
+            name="state" 
+            class="form-control"
+            id="State_field"
+            placeholder="Enter State Name"
+            th:value="${state}"
+            required>
+  </div>
+
+
+            <div class="mb-3">
+            <label for="pin_field">Pincode</label>
+            <input type="number"
+            name="pin" 
+            class="form-control"
+            id="pin_field"
+            placeholder="Enter Pincode"
+            th:value="${pin}"
+            max="6"
+            required>
+  </div>
+         
+         <div class="divider"></div>
+
+            <h1 class="text-center">Occupation History</h1>
+
+
+            <div class="mb-3">
+             <label for="occ_field">Occupation</label>
+            <input type="text"
+            name="occupation" 
+            class="form-control"
+             id="occ_field"
+            placeholder="Enter Occupation Name"
+            th:value="${occupation}"
+            required
+            >
+  </div>
+            <div class="mb-3">
+             <label for="ind_field">Industry</label>
+            <input type="text"
+            name="industry" 
+            class="form-control"
+             id="ind_field"
+            placeholder="Enter Industry Name"
+            th:value="${industry}"
+            required
+            >
+  </div>
+           
+            
+            <div class="mb-3">
+             <label for="sal_field">Salary</label>
+            <input type="number"
+            name="salary" 
+            class="form-control"
+             id="sal_field"
+            placeholder="Enter Salary"
+            th:value="${salary}"
+            required
+            >
+  </div>
+  
+  <div class="divider"></div>
+  
+            <h1 class="text-center">Medical History</h1>
+ 			
+  			
+  			<div class="mb-3">
+             <label for="dd_field">Diagnosis Date</label>
+            <input type="datetime"
+            name="diagnosisDate" 
+            class="form-control"
+             id="dd_field"
+            placeholder="Enter Diagnosis Date"
+            th:value="${diagnosisDate}"
+            required
+            >
+  </div>
+  			
+  			
+  			<div class="mb-3">
+             <label for="icd_field">Disease (ICD Code)</label>
+            <input type="number"
+            name="icd" 
+            class="form-control"
+             id="icd_field"
+            placeholder="Enter Disease (ICD Code)"
+            th:value="${icd}"
+            required
+            >
+  </div>
+    <div class="divider"></div>
+  
+            <h1 class="text-center">Policy Selection</h1>
+  			
+  			<div class="mb-3">
+             <label for="pname_field">Policy Name</label>
+            <input type="text"
+            name="policyName" 
+            class="form-control"
+             id="pname_field"
+            placeholder="Enter Policy Name"
+            th:value="${policyName}"
+            required
+            >
+  </div>
+            
+            
+            <div class="mb-3">
+             <label for="term_field">Term</label>
+            <input type="number"
+            name="Term" 
+            class="form-control"
+             id="term_field"
+            placeholder="Enter Term"
+            th:value="${Term}"
+            required>
+  </div>
+  
+  			
+            
+            <div class="mb-3">
+             <label for="amount_field">Amount</label>
+            <input type="number"
+            name="amount" 
+            class="form-control"
+             id="amount_field"
+            placeholder="Enter Amount"
+            th:value="${amount}"
+            required>
+  </div>
+
+
+            <div class="mb-3">
+            <label for="pmd_field">Policy Mature Date</label>
+            <input type="text"
+            name="MatureDate" 
+            class="form-control"
+            id="pmd_field"
+            placeholder="Enter Policy Mature Date"
+            th:value="${MatureDate}"
+            required
+            >
+  </div>
+   
+     
+   
+            
+            
+            <div class="container text-center mt-10">
+            <button type="submit" class="btn bg-primary text-white">Proceed To Payment</button>
+            </div>
+            
+           </form>
+           
+           </div>	      
+	    </div>
+	  </div>
+	</div>
+  </section>
+</body>
+</html>

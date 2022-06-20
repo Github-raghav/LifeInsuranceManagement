@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="normal/base::Layout(~{::section})"> 
+<head>
+<meta charset="UTF-8">
+<title>home page</title>
+</head>
+<body>
+  
+  <section>  
+		<div class="container-sm shadow-lg">
+	  <div class="row">
+	    <div class="col-md-8 offset-md-2">
+           <div class="my-card mt-3">
+           
+           <h1 class="text-center">FeedBack </h1>
+           
+                         <!--alert/success message  -->
+     <div th:if="${session.message}"  th:classappend="${session.message.type}" class="alert"  role="alert">
+      <p th:text="${session.message.content}"></p>
+      <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+      
+      </div> 
+           
+           <form action="" th:action="@{/user/processfeedback}" th:object="${feedback}" method="post" >
+            
+		 <div class="text-center">
+        <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+        <p>
+          <strong>Your opinion matters</strong>
+        </p>
+        <p>
+          Have some ideas how to improve our Service?
+          <strong>Give us your feedback.</strong>
+        </p>
+      </div>
+			
+			
+            <div class="mb-3">
+            <label for="name_field">rating</label>
+                 <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="rating" value="VG" id="radio3Example1" />
+          <label class="form-check-label" for="radio3Example1">
+            Very good
+          </label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="rating" value="G" id="radio3Example2" />
+          <label class="form-check-label" for="radio3Example2">
+            Good
+          </label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="rating" value="MD" id="radio3Example3" />
+          <label class="form-check-label" for="radio3Example3">
+            Medium
+          </label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="rating" value="BAD" id="radio3Example4" />
+          <label class="form-check-label" for="radio3Example4">
+            Bad
+          </label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="rating" value="VB" id="radio3Example5" />
+          <label class="form-check-label" for="radio3Example5">
+            Very bad
+          </label>
+        </div>            
+  </div>
+            <div class="mb-3">
+            <label class="text-center"><strong>What could we improve?</strong></label>
+            <input type="text"
+            name="reviews" 
+            class="form-control"
+            id="desc_field"
+            placeholder="Enter reviews"
+            required
+            >
+  </div>
+
+            <div class="container text-center mt-10">
+            <button type="Submit" class="btn bg-primary text-white">Submit</button>
+            </div>
+            
+           </form>
+           
+           </div>	      
+	    </div>
+	  </div>
+	</div>
+  </section>
+</body>
+</html>

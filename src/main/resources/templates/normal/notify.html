@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="normal/base::Layout(~{::section})"> 
+<head>
+<meta charset="UTF-8">
+<title>Claim Request page</title>
+</head>
+<body>
+  
+  <section>  
+	
+	<div class="card ms-3 me-3 mt-5">
+		<div class="class-body">
+			<h1 class="text-center">Claim Requests</h1>	
+	           	           
+	           <table class="table">
+  <thead>
+    <tr>
+     <th scope="col">Id</th>
+     <th scope="col">Claim Number</th>
+     <th scope="col">Claim Status</th> 
+     <th scope="col">Action</th>  
+    </tr> 
+  </thead>
+  <tbody>
+    
+    
+    <tr th:each="c : ${claim}">
+      <td th:text=${c.id} class="table-active"></td>
+      <th scope="row" th:text=${c.claimNumber}></th>
+      <th scope="row" th:text=${c.claimStatus}></th>
+      <td>
+      <a th:href="@{'/user/resubmitClaim/'+${c.id}}" class="btn btn-success btn-sm">Resubmit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+	           
+	           
+		</div>
+	</div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ th:replace="admin/base::Layout(~{::section})"> 
+<head>
+<meta charset="UTF-8">
+<title>Help Request page</title>
+</head>
+<body>
+  
+  <section>  
+	
+	<div class="card ms-3 me-3 mt-5">
+		<div class="class-body">
+			<h1 class="text-center">Claim Requests</h1>	
+	           
+	                <!--alert/success message  -->
+     <div th:if="${session.message}"  th:classappend="${session.message.type}" class="alert"  role="alert">
+      <p th:text="${session.message.content}"></p>
+      <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+      
+      </div>
+	           
+	           <table class="table">
+  <thead>
+    <tr>
+     <th scope="col">Id</th>
+     <th scope="col">Claim Number</th>
+     <th scope="col">Claim Paid Date</th>  
+     <th scope="col">Claim Status</th>  
+     <th scope="col">Total Insurance Paid</th>     
+     <th scope="col">Action</th>
+    </tr> 
+  </thead>
+  <tbody>
+    
+    
+    <tr th:each="c : ${claim}">
+      <td th:text=${c.id} class="table-active"></td>
+      <th scope="row" th:text=${c.claimNumber}></th>
+      <th scope="row" th:text=${c.claimPaid}></th>
+      <th scope="row" th:text=${c.claimStatus}></th>
+      <td th:text=${c.totalCoInsurancePaid} class="table-active"></td>
+      <td>
+            <a type="boolean" th:href="@{'/adminLogin/approveClaim/'+${c.id}}" name="approve" class="btn btn-success btn-sm">Approve</a>
+          <a th:href="@{'/adminLogin/deleteClaimRequest/'+${c.id}}" class="btn btn-warning btn-sm">Reject</a>  
+          <a th:href="@{'/adminLogin/deleteClaim/'+${c.id}}" class="btn btn-danger btn-sm">Delete</a>           
+      </td>
+    </tr>
+  </tbody>
+</table>
+	           
+	           
+		</div>
+	</div>
+  </section>
+</body>
+</html>
